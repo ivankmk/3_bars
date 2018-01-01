@@ -1,22 +1,23 @@
-# Ближайшие бары
 
-[FIXME. Здесь будет описание проекта]
+![](https://media.giphy.com/media/gKs9nR65jrMqY/giphy.gif)
 
-# Как запустить
+# Closest bars in Moscow
 
-Скрипт требует для своей работы установленного интерпретатора Python версии 3.5
+Based on user inputs in the form of latitude and longitude, you will get the closest bar around you.
 
-Запуск на Linux:
+# How to launch
+
+Script required Python 3.5
 
 ```bash
 
 $ python bars.py # possibly requires call of python3 executive instead of just python
-# FIXME вывести пример ответа скрипта
+Your closest bar is: Staropramen
 
 ```
 
-Запуск на Windows происходит аналогично.
+The same with Windows environment
 
-# Цели проекта
+# Project objectives
 
-Код создан в учебных целях. В рамках учебного курса по веб-разработке - [DEVMAN.org](https://devman.org)
+The script created for training purposes as part of web development online course - [DEVMAN.org](https://devman.org)
