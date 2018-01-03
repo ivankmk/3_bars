@@ -28,7 +28,7 @@ def get_smallest_bar(all_bars):
     return small
 
 
-def get_closest_bar(data, my_latitude, my_longitude):
+def get_closest_bar(dataset, my_latitude, my_longitude):
     final_list = []
     for each_bar in bars:
         bar_name = str(each_bar['properties']['Attributes']['Name'])
