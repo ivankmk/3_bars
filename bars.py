@@ -31,12 +31,12 @@ def get_smallest_bar(all_bars):
 def get_closest_bar(data, my_latitude, my_longitude):
     final_list = []
     for each_bar in bars:
-        name = str(each_bar['properties']['Attributes']['Name'])
+        bar_name = str(each_bar['properties']['Attributes']['Name'])
         coord_1 = str(each_bar['geometry']['coordinates'][1])
         coord_2 = str(each_bar['geometry']['coordinates'][0])
-        final_list.append([[name, coord_1, coord_2][0],
-                           (vincenty(([name, coord_1, coord_2][2],
-                                      [name, coord_1, coord_2][1]),
+        final_list.append([[bar_name, coord_1, coord_2][0],
+                           (vincenty(([bar_name, coord_1, coord_2][2],
+                                      [bar_name, coord_1, coord_2][1]),
                                      (my_latitude, my_longitude)).kilometers)])
 
     closest_bar = [min(final_list, key=lambda x: x[1])]
