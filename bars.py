@@ -43,7 +43,7 @@ if __name__ == '__main__':
     try:
         my_longitude = float(input('To find closest bar enter Longitude: '))
         my_latitude = float(input('and Latitude: '))
-    except:
+    except ValueError::
         print('Please, use only digits as Longitude and Latitude')
         sys.exit(0)
     print('Closest bar in Moscow: {}'.format(get_closest_bar(bars,
