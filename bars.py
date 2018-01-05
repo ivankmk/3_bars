@@ -42,5 +42,4 @@ if __name__ == '__main__':
         sys.exit('Please, use only digits as Longitude and Latitude')
     print('Closest bar in Moscow: {}'.format(
             get_closest_bar_name(bars, my_longitude, my_latitude)
-            )
-          )
+            ))
