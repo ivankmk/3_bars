@@ -1,25 +1,35 @@
 
 ![](https://media.giphy.com/media/gKs9nR65jrMqY/giphy.gif)
 
-# Closest bars in Moscow
+# Bars in Moscow
 
-Based on user inputs in the form of latitude and longitude, you will get the closest bar around you.
+This script revert to you:
+ - Biggest bar name
+ - Smallest bar name
+ - Based on user inputs in the form of latitude and longitude you will also get the name of closest bar around you.
+
+# Requirements
+
+ - Python 3.5
+ - Packages: json, sys, geopy
+ - Bars dataset in JSON format. You can download it from [Moscow portal of open data ](https://data.mos.ru/opendata/7710881420-bary)
+
 
 # How to launch
-
-Script required Python 3.5
 
 ```bash
 
 $ python bars.py # possibly requires call of python3 executive instead of just python
-Your closest bar is: Staropramen
+Please enter path to JSON file with Bars: dataset.json
+Smalles bar in Moscow: БАР. СОКИ
+Biggest bar in Moscow: Спорт бар «Красная машина»
+To find closest bar enter Longitude: 37.585757
+and Latitude: 55.778402
+Closest bar in Moscow: HAGGIS
 
 ```
 
 The same with Windows environment;
-
-JSON Dataset [here](https://devman.org/media/filer_public/95/74/957441dc-78df-4c99-83b2-e93dfd13c2fa/bars.json);  
-
 
 # Project objectives
 
