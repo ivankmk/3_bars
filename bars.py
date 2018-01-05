@@ -8,49 +8,44 @@ from geopy.distance import vincenty
 import requests
 
 
-def load_file():
-    path = 'https://devman.org/media/filer_public/95/74/' \
-        '957441dc-78df-4c99-83b2-e93dfd13c2fa/bars.json'
+def file_connection():
+    path = ('https://devman.org/media/filer_public/95/74/'
+            '957441dc-78df-4c99-83b2-e93dfd13c2fa/bars.json')
     url = urllib.request.urlopen(path)
     full_list_of_bars = json.loads(url.read().decode('utf-8'))
     return full_list_of_bars['features']
 
 
 def get_biggest_bar(all_bars):
-    big = max(bars,
-              key=lambda x: x['properties']['Attributes']['SeatsCount'])
-    return big
+    biggest_bar = max(bars,
+                     key=lambda x: x['properties']['Attributes']['SeatsCount'])
+    return biggest_bar
 
 
 def get_smallest_bar(all_bars):
-    small = min(bars,
-                key=lambda x: x['properties']['Attributes']['SeatsCount'])
-    return small
+    smallest_bar = min(bars,
+                       key=lambda x:
+                       x['properties']['Attributes']['SeatsCount'])
+    return smallest_bar
 
 
-def get_closest_bar(dataset, my_latitude, my_longitude):
-    final_list = []
-    for each_bar in bars:
-        bar_name = str(each_bar['properties']['Attributes']['Name'])
-        coord_1 = str(each_bar['geometry']['coordinates'][1])
-        coord_2 = str(each_bar['geometry']['coordinates'][0])
-        final_list.append([[bar_name, coord_1, coord_2][0],
-                           (vincenty(([bar_name, coord_1, coord_2][2],
-                                      [bar_name, coord_1, coord_2][1]),
-                                     (my_latitude, my_longitude)).kilometers)])
-
-    closest_bar = [min(final_list, key=lambda x: x[1])]
-    return closest_bar[0][0]
-
+def get_closest_bar(bars, latitude, longitude):
+    closest_bar_info = min(bars, key=lambda x: round(vincenty(
+        (latitude, longitude), x['geometry']['coordinates']).kilometers, 3))
+    return closest_bar_info['properties']['Attributes']['Name']
 
 if __name__ == '__main__':
-    bars = load_file()
-    my_longitude = float(input('Enter Longitude: '))
-    my_latitude = float(input('Enter Latitude: '))
-    print('Closest bar: {}'.format(get_closest_bar(bars,
-                                                   my_longitude,
-                                                   my_latitude)))
-    print('Smalles bar: {}'
+    bars = file_connection()
+    print('Smalles bar in Moscow: {}'
           .format(get_smallest_bar(bars)['properties']['Attributes']['Name']))
-    print('Biggest bar: {}'
+    print('Biggest bar in Moscow: {}'
           .format(get_biggest_bar(bars)['properties']['Attributes']['Name']))
+    try:
+        my_longitude = float(input('To find closest bar enter Longitude: '))
+        my_latitude = float(input('and Latitude: '))
+    except:
+        print('Please, use only digits as Longitude and Latitude')
+        sys.exit(0)
+    print('Closest bar in Moscow: {}'.format(get_closest_bar(bars,
+                                                             my_longitude,
+                                                             my_latitude)))
