@@ -19,13 +19,12 @@ This script revert to you:
 
 ```bash
 
-$ python bars.py # possibly requires call of python3 executive instead of just python
-Please enter path to JSON file with Bars: dataset.json
+$ python bars.py data-2897-2017-12-21-1.json # possibly requires call of python3 executive instead of just python
 Smalles bar in Moscow: БАР. СОКИ
 Biggest bar in Moscow: Спорт бар «Красная машина»
 To find closest bar enter Longitude: 37.585757
 and Latitude: 55.778402
-Closest bar in Moscow: HAGGIS
+Closest bar in Moscow: HAGGIS, and his address: город Москва, улица Бутырский Вал, дом 10
 
 ```
 
