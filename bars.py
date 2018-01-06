@@ -23,13 +23,13 @@ def get_smallest_bar(all_bars):
 def get_closest_bar(bars, latitude, longitude):
     closest_bar_info = min(bars, key=lambda x: round(vincenty(
         (latitude, longitude), x['geoData']['coordinates']).kilometers, 3))
-    return closest_bar_info['Name'], closest_bar_info['Address']
+    return closest_bar_info
 
 
 if __name__ == '__main__':
     try:
         bars = load_data(sys.argv[1])
-    except FileNotFoundError:
+    except (FileNotFoundError, IndexError):
         sys.exit('File not found')
     print('Smalles bar in Moscow: {}'
           .format(get_smallest_bar(bars)['Name']))
@@ -41,6 +41,6 @@ if __name__ == '__main__':
     except ValueError:
         sys.exit('Please, use only digits as Longitude and Latitude')
     print("""Closest bar in Moscow: {}, and his address:"""
-          .format(get_closest_bar(bars, my_longitude, my_latitude)[0]),
-          get_closest_bar(bars, my_longitude, my_latitude)[1]
+          .format(get_closest_bar(bars, my_longitude, my_latitude)['Name']),
+          get_closest_bar(bars, my_longitude, my_latitude)['Address']
           )
